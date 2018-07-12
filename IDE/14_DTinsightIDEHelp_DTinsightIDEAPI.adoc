@@ -1,0 +1,228 @@
+= DTinsightIDE API
+:toc: left
+:toclevels: 4
+
+:sectnums:
+:sectnumlevels: 5
+
+为了方便平台管理者对计算任务进行统一管理与查询，DTinsightIDE可以向供外部系统同步任务运行状态，API接口如下：
+
+* **项目查询**
+
+* **实时任务查询**
+. 接口功能：查询DTinsightIDE某项目下的所有实时任务运行信息
+. 请求URL：`/api/stream/streamTask/getTaskList`
+. 输入参数
+** 参数位置：`requestBody`
+** 参数类型：`JSON`
++
+[cols="1,4,1,1,1", options="header]
+|===
+|名称 |含义 |是否必填 |数据类型 |默认值
+|pageIndex	|请求页码	|否	|int	|1
+|pageSize	|每页数据条数	|否	|int	|10
+|isTimeSortDesc	|时间排序方式	|否	|bool	|true
+|status	|任务状态	|否	|int	|无
+|taskName	|任务名称	|否	|string	|空
+|===
+
++
+. 输出参数
+
+** 参数类型：`JSON`
++
+[cols="1,3", options="header]
+|===
+|名称 |含义
+|code	|1:成功 -1: 失败 0:需要登录
+|message	|错误数据信息
+|result |
+|data	|返回结果数据
+|space	|调用接口花费时间ms
+|===
+
+** data参数 +
+[source, JSON]
+{
+    "pageCount": 1,
+    "taskList": [
+      {
+        "id": 2,
+        "gmtCreate": 1493212918000,
+        "gmtModified": 1493212917000,
+        "isDeleted": 0,
+        "tenantId": 1,
+        "projectId": 123,
+        "taskId": "TK5b12839b13b549dbbb4cd74bf8e4b019",
+        "engineTaskId": "1",
+        "name": "mynewtask",
+        "status": 0,
+        "taskType": 1,
+        "computeType": 0,
+        "engineType": 0,
+        "sqlText": "",
+        "taskParams": "",
+        "modifyUser": {
+          "id": 2,
+          "gmtCreate": 1493178887000,
+          "gmtModified": 1493178887000,
+          "isDeleted": 0,
+          "userName": "xc",
+          "phoneNumber": "111",
+          "dtUicUserId": 123,
+          "email": "xc@123.com",
+          "status": 0,
+          "defaultProjectId": null
+        },
+        "modifyUserId": 1,
+        "createUser": {
+          "id": 2,
+          "gmtCreate": 1493178887000,
+          "gmtModified": 1493178887000,
+          "isDeleted": 0,
+          "userName": "xc",
+          "phoneNumber": "111",
+          "dtUicUserId": 123,
+          "email": "xc@123.com",
+          "status": 0,
+          "defaultProjectId": null
+        },
+        "createUserId": 1,
+        "version": 0,
+        "nodePid": 1
+      }
+    ],
+    "currentPage": 1
+  }
+
+
+* **离线任务查询**
+. 接口功能：查询DTinsightIDE某项目下的所有离线任务运行信息
+. 请求URL：`/api/batch/batchJob/queryJobs`
+. 输入参数
+** 参数位置：`requestBody`
+** 参数类型：`JSON`
++
+[cols="1,5,2", options="header]
+|===
+|名称 |含义 |是否必填
+|projectId	|项目id	|是
+|tenantId	|租户id	|是
+|userId	|用户id	|是
+|startTime	|开始时间	|是
+|endTime	|结束时间	|是
+|jobStatuses	|任务状态	|可选
+|taskName	|任务名	|可选
+|ownerId	|责任人	|可选
+|type	|任务类型	|可选
+|currentPage	|分页数	|可选
+|pageSize	|分页大小	|可选
+|execStartTime	|执行开始时间	|可选
+|execEndTime	|执行结束时间	|可选
+|execTime	|执行耗时, 单位：秒	|可选
+|hasAttach	|任务状态统计，-1：总数、0：等待运行、4：运行中、5：已完成、8：失败	|必填，列表模式：true，图形模式：false
+|===
++
+** 示例：
+[source, JSON]
+{
+"projectId":1,
+"tenantId":123,
+"userId":1,
+"startTime":1493966650,
+"endTime":1493966690,
+"jobStatuses":null,
+"taskName":null,
+"ownerId":null,
+"type":1,
+"currentPage":1,
+"pageSize":20,
+"execStartTime":1493966650,
+"execEndTime":1493966690,
+"execTime":100,
+"hasAttach":true,
+}
+
+. 输出参数
+
+** 参数类型：`JSON`
++
+[cols="1,3", options="header]
+|===
+|名称 |含义
+|code	|1:成功 -1: 失败 0:需要登录
+|message	|错误数据信息
+|result |
+|data	|返回结果数据
+|space	|调用接口花费时间ms
+|===
+
+** data参数 +
+[source, JSON]
+{
+   "currentPage": 1,
+   "pageSize": 20,
+   "totalCount": 1,
+   "totalPage": 1,
+   "data": [
+     {
+       "id": 2,
+       "gmtCreate": 1493966658000,
+       "gmtModified": 1493966658000,
+       "isDeleted": 0,
+       "tenantId": 123,
+       "projectId": 1,
+       "batchTask": {
+         "id": 2,
+         "gmtCreate": 1493996070000,
+         "gmtModified": 1493996070000,
+         "isDeleted": 0,
+         "tenantId": 123,
+         "projectId": 1,
+         "name": "toutian-test",
+         "taskType": 0,
+         "computeType": 1,
+         "engineType": 1,
+         "sqlText": "select count(1) from ***",
+         "taskParams": "",
+         "scheduleConf": "",
+         "scheduleStatus": 1,
+         "modifyUser": {
+           "id": 1,
+           "gmtCreate": 1493176301000,
+           "gmtModified": 1493176301000,
+           "isDeleted": 0,
+           "userName": "toutian",
+           "phoneNumber": "1111111111",
+           "dtUicUserId": 123,
+           "email": "toutian@dtstack.com",
+           "status": 0,
+           "defaultProjectId": null
+         },
+         "modifyUserId": 1,
+         "createUser": {
+           "id": 1,
+           "gmtCreate": 1493176301000,
+           "gmtModified": 1493176301000,
+           "isDeleted": 0,
+           "userName": "toutian",
+           "phoneNumber": "1111111111",
+           "dtUicUserId": 123,
+           "email": "toutian@dtstack.com",
+           "status": 0,
+           "defaultProjectId": null
+         },
+         "createUserId": 1,
+         "version": 1,
+         "nodePid": 13
+       },
+       "jobId": "",
+       "engineJobId": null,
+       "status": 1,
+       "taskId": 2,
+       "createUserId": 1,
+       "type": 1,
+       "businessDate": "2017-05-05 14:44:18"
+     }
+   ]
+ }

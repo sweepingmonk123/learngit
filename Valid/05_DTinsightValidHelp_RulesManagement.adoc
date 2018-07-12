@@ -1,0 +1,42 @@
+[[RulesManagement]]
+= 规则配置
+//文档整体配置
+include::99_documentSetting.adoc[]
+
+[[rulesmanagement_createrule]]
+== 新建规则
+
+[[rulesmanagement_createrule_routine]]
+=== 流程
+
+
+[[rulesmanagement_createrule_target]]
+=== 选择校验目标
+
+
+[[rulesmanagement_createrule_create]]
+=== 校验规则的配置
+
+
+[[rulesmanagement_createrule_shedule]]
+=== 调度周期的配置
+
+
+[[rulesmanagement_createrule_remote]]
+=== 远程调用
+
+
+[[rulesmanagement_viewrule]]
+== 查看/编辑已有规则
+
+
+[[rulesmanagement_run]]
+== 规则的执行
+
+
+[[rulesmanagement_rulesdetail]]
+== 计算规则
+
+
+[[rulesmanagement_alarm]]
+== 告警触发

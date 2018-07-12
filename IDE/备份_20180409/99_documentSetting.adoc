@@ -1,0 +1,14 @@
+:icons: font
+:toc: left
+:toclevels: 4
+:icons: font
+
+:sectnums:
+:sectnumlevels: 5
+
+:source-highlighter: rouge
+
+:V100image: image:images\V1.0.0.png[alt="V1.0.0", width="90"]
+:V110image: image:images\V1.1.0.png[alt="V1.1.0", width="90"]
+:V120image: image:images\V1.2.0.png[alt="V1.2.0", width="90"]
+:V160image: image:images\V1.6.0.png[alt="V1.6.0", width="90"]

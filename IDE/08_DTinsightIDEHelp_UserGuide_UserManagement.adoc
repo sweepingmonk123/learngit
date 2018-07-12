@@ -1,0 +1,16 @@
+[[UserManagement]]
+=	用户管理
+//文档整体配置
+include::99_documentSetting.adoc[]
+
+用户认证包括登录与找回密码两个功能
+
+[[usermanagement_login]]
+==	登录
+用户在浏览器输入DTinsightIDE登录网址，打开页面后，输入手机号或者邮箱，同时输入密码，点击“登录”按钮即可登录成功。
+
+[[usermanagement_findpassword]]
+==	找回密码
+若用户忘记了登录密码，点击“忘记密码？”按钮后，进入找回密码流程，可通过手机号码找回，也可以通过邮箱找回。
+
+NOTE: 仅当配置了邮件服务器后才能使用邮件找回，若将DTinsightIDE部署在内网中，仅能通过管理员找回。

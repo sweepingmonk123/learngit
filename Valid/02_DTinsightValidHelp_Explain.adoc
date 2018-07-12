@@ -1,0 +1,10 @@
+[[Explain]]
+= 名词解释
+//文档整体配置
+include::99_documentSetting.adoc[]
+
+[cols="1,4", options="header"]
+|===
+|专有名词
+|解释
+|===
