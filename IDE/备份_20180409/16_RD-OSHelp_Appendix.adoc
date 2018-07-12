@@ -1,8 +1,0 @@
-= Appendix
-//文档整体配置
-include::99_documentSetting.adoc[]
-
-== 每个角色对应的权限点
-
-image::images\16_RD-OSHelp_Appendix-7e7d0.png[]
-image::images\16_RD-OSHelp_Appendix-72c22.png[]

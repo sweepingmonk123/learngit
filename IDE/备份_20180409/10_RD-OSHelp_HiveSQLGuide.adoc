@@ -1,9 +1,0 @@
-= HIVE SQL指南
-:toc: left
-:toclevels: 4
-
-:sectnums:
-:sectnumlevels: 5
-
-
-update delete 不能操作
